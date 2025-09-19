@@ -73,67 +73,76 @@ private fun week03Classes() {
     person1.introduce()
     person1.birthday()
 
-    class Animal(var species: String) {
+    open class Animal(var species: String) {
         var weight: Double = 0.0
         constructor(species: String, weight: Double) : this(species) {
             this.weight = weight
             Log.d("KotlinWeek03", "$species 의 무게 : $weight kg ")
         }
-        fun makeSound() {
+        open fun makeSound() {
             Log.d("KotlinWeek03", "$species 가 소리를 냅니다.")
         }
     }
     val puppy = Animal("강아지", 6.5)
     puppy.makeSound()
 
-    class Student{
-        var name: String = ""
-        var age: Int = 0
-
-        fun introduce() {
-            println("Hi, I'm $name and I'm $age years old")
+    class Dog(species: String, weight: Double, val breed: String) : Animal(species, weight) {
+        override fun makeSound() {
+            Log.d("KotlinWeek03", "$breed ($species) 가 멍멍 짖습니다.")
         }
     }
-    val student = Student()
-    student.name = "Choi"
-    student.age = 22
-    student.introduce()
 
-    data class Person(val name: String, val age: Int)
+    val dog = Dog("강아지", 12.5, "골든리트리버")
+    dog.makeSound()
 
-    val person1 = Person("Lee", 24)
-    val person2 = Person("Lee", 24)
-
-    println("Person1: $person1")
-    println("Equal?: ${person1 == person2}")
+//    class Student{
+//        var name: String = ""
+//        var age: Int = 0
+//
+//        fun introduce() {
+//            println("Hi, I'm $name and I'+m $age years old")
+//        }
+//    }
+//    val student = Student()
+//    student.name = "Choi"
+//    student.age = 22
+//    student.introduce()
+//
+//    data class Person(val name: String, val age: Int)
+//
+//    val person1 = Person("Lee", 24)
+//    val person2 = Person("Lee", 24)
+//
+//    println("Person1: $person1")
+//    println("Equal?: ${person1 == person2}")
 }
 
-private fun week02Functions() {
+//private fun week02Functions() {
 //    println("Week02 functions")
 //
 //    fun greet(name: String) = "Hello, $name!"
 //
 //    println(greet("Android Developer"))
+//
+//    println("== Kotlin Functions ==")
+//
+//    fun greet(name: String): String {
+//        return "Hello, $name"
+//    }
+//
+//    fun add(a: Int, b: Int) = a + b
+//
+//    fun introduce(name: String, age: Int = 19) {
+//        println("My name is $name and I'm $age years old")
+//    }
+//
+//    println(greet("Kotlin"))
+//    println("Sum : ${add(5, -71)}")
+//    introduce("Park")
+//    introduce("Kim",29)
+//}
 
-    println("== Kotlin Functions ==")
-
-    fun greet(name: String): String {
-        return "Hello, $name"
-    }
-
-    fun add(a: Int, b: Int) = a + b
-
-    fun introduce(name: String, age: Int = 19) {
-        println("My name is $name and I'm $age years old")
-    }
-
-    println(greet("Kotlin"))
-    println("Sum : ${add(5, -71)}")
-    introduce("Park")
-    introduce("Kim",29)
-}
-
-private fun week02Variables() {
+//private fun week02Variables() {
 //    println("Week02 Variables")
 //
 //    val courseName = "Mobile Programming"
@@ -143,19 +152,19 @@ private fun week02Variables() {
 //
 //    println("Course : $courseName")
 //    println("Week : $week")
-
-    println("== Kotlin Variables ==")
-
-    val name = "Android"
-    var version = 8.1
-    println("Hello $name $version")
-
-    val age: Int = 23
-    val height: Double = 177.7
-    val isStudent: Boolean = true
-
-    println("Age : $age, height : $height, Student : $isStudent")
-}
+//
+//    println("== Kotlin Variables ==")
+//
+//    val name = "Android"
+//    var version = 8.1
+//    println("Hello $name $version")
+//
+//    val age: Int = 23
+//    val height: Double = 177.7
+//    val isStudent: Boolean = true
+//
+//    println("Age : $age, height : $height, Student : $isStudent")
+//}
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
